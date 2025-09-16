@@ -1,0 +1,17 @@
+{
+  "name": "desafio01",
+  "version": "1.0.0",
+  "description": "Exemplos de Design Patterns em JavaScript",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start01": "node desafio01/index01.js",
+    "start02": "node desafio01/index02.js",
+    "problem_abstract": "node desafio01/problemAbstract.js",
+    "problem_factory": "node desafio01/problemFactory.js",
+    "problem_builder": "node desafio01/problemBuilder.js",
+    "problem_singleton": "node desafio01/problemSingleton.js"
+  },
+  "author": "Ugioni",
+  "license": "MIT"
+}

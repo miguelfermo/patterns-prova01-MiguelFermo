@@ -1,0 +1,13 @@
+{
+  "name": "abstract-factory-example",
+  "version": "1.0.0",
+  "description": "Exemplos de Design Patterns em JavaScript",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "problem": "node problem.js"
+  },
+  "author": "Ugioni",
+  "license": "MIT"
+}

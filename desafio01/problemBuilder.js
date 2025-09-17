@@ -1,10 +1,11 @@
+// Produto
 class Lanche {
-  constructor(pao, carne, queijo, salada, molho) {
-    this.pao = pao;
-    this.carne = carne;
-    this.queijo = queijo;
-    this.salada = salada;
-    this.molho = molho;
+  constructor() {
+    this.pao = false;
+    this.carne = false;
+    this.queijo = false;
+    this.salada = false;
+    this.molho = false;
   }
 
   show() {
@@ -18,8 +19,76 @@ class Lanche {
   }
 }
 
-const lancheSimples = new Lanche(true, true, false, false, false);
-const lancheCompleto = new Lanche(true, true, true, true, true);
+// Builder
+class LancheBuilder {
+  constructor() {
+    this.lanche = new Lanche();
+  }
+
+  addPao() {
+    this.lanche.pao = true;
+    return this;
+  }
+
+  addCarne() {
+    this.lanche.carne = true;
+    return this;
+  }
+
+  addQueijo() {
+    this.lanche.queijo = true;
+    return this;
+  }
+
+  addSalada() {
+    this.lanche.salada = true;
+    return this;
+  }
+
+  addMolho() {
+    this.lanche.molho = true;
+    return this;
+  }
+
+  build() {
+    return this.lanche;
+  }
+}
+
+// Director → monta configurações pré-definidas
+class LancheDirector {
+  static buildSimples() {
+    return new LancheBuilder()
+      .addPao()
+      .addCarne()
+      .build();
+  }
+
+  static buildCompleto() {
+    return new LancheBuilder()
+      .addPao()
+      .addCarne()
+      .addQueijo()
+      .addSalada()
+      .addMolho()
+      .build();
+  }
+
+  static buildVegetariano() {
+    return new LancheBuilder()
+      .addPao()
+      .addQueijo()
+      .addSalada()
+      .addMolho()
+      .build();
+  }
+}
+
+// Uso
+const lancheSimples = LancheDirector.buildSimples();
+const lancheCompleto = LancheDirector.buildCompleto();
+const lancheVegetariano = LancheDirector.buildVegetariano();
 
 lancheSimples.show();
 lancheCompleto.show();
+lancheVegetariano.show();

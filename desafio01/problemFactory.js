@@ -16,15 +16,34 @@ class Onibus {
   }
 }
 
-const tipo = "onibus";
-let transporte;
+// Usando Factory Method
+class TransportFactory {
+  static types = {
+    bicicleta: Bicicleta,
+    patinete: Patinete,
+    onibus: Onibus,
+  };
 
-if (tipo === "bicicleta") {
-  transporte = new Bicicleta();
-} else if (tipo === "patinete") {
-  transporte = new Patinete();
-} else if (tipo === "onibus") {
-  transporte = new Onibus();
+  static createTransport(type) {
+    const TransportClass = this.types[type];
+    if (!TransportClass) {
+      throw new Error("Tipo de transporte não suportado");
+    }
+    return new TransportClass();
+  }
 }
 
-console.log(transporte.move());
+// Código do cliente
+function main() {
+  const tipos = ["bicicleta", "patinete", "onibus"];
+  try {
+    tipos.forEach((tipo) => {
+      const transporte = TransportFactory.createTransport(tipo);
+      console.log(transporte.move());
+    });
+  } catch (err) {
+    console.error("Erro ao criar transporte...", err.message);
+  }
+}
+
+main();
